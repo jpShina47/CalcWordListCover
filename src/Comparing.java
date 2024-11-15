@@ -178,6 +178,12 @@ class Comparing implements ActionListener{
         } catch (IOException e1) {
             System.out.println(e1.toString());
         }
+        V_num = 0;
+        N_num = 0;
+        Adj_num = 0;
+        Adv_num = 0;
+        Prep_num = 0;
+        ConjAux_num = 0;
         MatchedWrdNum.clear();
         MatchedWrdNumTrue.clear();
         MatchedWrdArrTrue.clear();
