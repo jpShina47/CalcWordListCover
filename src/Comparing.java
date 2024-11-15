@@ -28,6 +28,9 @@ class Comparing implements ActionListener{
     private String POS_V = "V";
     private String POS_N = "N";
     
+    static String MatchedWrdPOSforResult;
+    private int V_num,N_num,Adj_num,Adv_num,Prep_num,ConjAux_num;
+    
     private String MatchedWrd;
     private String MatchedWrdPOS;
     private String RowNumToString;
@@ -36,6 +39,7 @@ class Comparing implements ActionListener{
     static List<String> MatchedWrdArrTrue = new ArrayList<String>();
     static List<Integer> MatchedWrdNum = new ArrayList<Integer>();
     private List<Integer> MatchedWrdNumTrue = new ArrayList<Integer>();
+    private List<String> MatchedWrdPOSList = new ArrayList<String>();
     
 	@Override
 	public void actionPerformed(ActionEvent e){
@@ -52,7 +56,7 @@ class Comparing implements ActionListener{
 		} catch (IOException ioexception) {
 	        System.out.println(ioexception.toString());
 		}
-		String[] WordArr = MakeWinFrame.ScriptTextArea.getText().split("\\s|,\\s*|;\\s*|:\\s*|\\.\\s*|\\n\\s*");
+		String[] WordArr = MakeWinFrame.ScriptTextArea.getText().split("\\s|,\\s*|;\\s*|:\\s*|\\.\\s*|\\n\\s*|\\-\\s*");
 		
 		Sheet sheet = wb.getSheetAt(0);
         int rowCount = sheet.getLastRowNum();
@@ -133,9 +137,37 @@ class Comparing implements ActionListener{
         	RowNumToString = Integer.toString(Num + 1);
         	MatchedWrdPOS = matchedrow.getCell(0).getStringCellValue();
         	MatchedWrd = matchedrow.getCell(1).getStringCellValue();
+        	MatchedWrdPOSList.add(MatchedWrdPOS);
         	MatchedWrdArrTrue.add(RowNumToString + "\t" + MatchedWrdPOS + "\t" + MatchedWrd);
         }
-
+        for(String Str:MatchedWrdPOSList){
+        	if(Str.equals("V")){
+        		V_num++;
+        	}
+        	if(Str.equals("N")){
+        		N_num++;
+        	}
+        	if(Str.equals("Adj")){
+        		Adj_num++;
+        	}
+        	if(Str.equals("Adv")){
+        		Adv_num++;
+        	}
+        	if(Str.equals("Prep")) {
+        		Prep_num++;
+        	}
+        	if(Str.equals("Conj")||Str.equals("Aux")){
+        		ConjAux_num++;
+        	}
+        }
+        
+        MatchedWrdPOSforResult = "名詞"		+ "\t" + Integer.toString(N_num) + "\n";
+        MatchedWrdPOSforResult = "動詞"		+ "\t" + Integer.toString(V_num) + "\n";
+        MatchedWrdPOSforResult = "形容詞"		+ "\t" + Integer.toString(Adj_num) + "\n";
+        MatchedWrdPOSforResult = "副詞"		+ "\t" + Integer.toString(Adv_num) + "\n";
+        MatchedWrdPOSforResult = "前置詞"		+ "\t" + Integer.toString(Prep_num) + "\n";
+        MatchedWrdPOSforResult = "接続詞・他"	+ "\t" + Integer.toString(ConjAux_num);
+        
         new GetResult();
         
         /*workbookを閉じる処理*/

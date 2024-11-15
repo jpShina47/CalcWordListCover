@@ -20,9 +20,10 @@ class MakeWinFrame{
 	static JTextField ResultTextField = new JTextField();
 	static JTextArea ScriptTextArea = new JTextArea();
 	static JTextArea MatchedWrdTextArea = new JTextArea();
-	JPanel Panel1 = new JPanel();
-	JPanel Panel2 = new JPanel();
-	JPanel Panel3 = new JPanel();
+	static JTextArea AnalizedResultTextArea = new JTextArea();
+	JPanel Panel1 = new JPanel();	//Scriptファイル名，Scriptのセット
+	JPanel Panel2 = new JPanel();	//単語帳のボタンセット
+	JPanel Panel3 = new JPanel();	//結果を表示するセット
 	static JCheckBox WordList_Target1900 = new JCheckBox();
 	static JCheckBox WordList_Target1400 = new JCheckBox();
 	static JCheckBox WordList_SysTan = new JCheckBox();
@@ -37,7 +38,7 @@ class MakeWinFrame{
 	
 	public MakeWinFrame(){
 		/*---------------------------------- Frame Setting ----------------------------------*/
-		frame.setSize(900,600);
+		frame.setSize(1000,700);
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setLayout(grdbglt);
@@ -52,7 +53,7 @@ class MakeWinFrame{
 		gbc.gridx = 0;
 		gbc.gridy = 0;
 		gbc.gridheight = 3;
-		gbc.weightx = 0.7;
+		gbc.weightx = 0.6;
 		gbc.weighty = 1.0; // Panel1に十分な縦のスペースを確保する
 		grdbglt.setConstraints(Panel1, gbc);
 		
@@ -64,7 +65,7 @@ class MakeWinFrame{
 	    gbc.gridx = 1;
 	    gbc.gridy = 0;
 	    gbc.gridheight = 1;
-	    gbc.weightx = 0.3;
+	    gbc.weightx = 0.4;
 	    gbc.weighty = 0.2;
 		grdbglt.setConstraints(Panel2, gbc);
 		
@@ -127,6 +128,7 @@ class MakeWinFrame{
 		GetRationBt.addActionListener(new Comparing());
 		ResultTextField.setMargin(new Insets(0, 5, 0, 0));
 		MatchedWrdTextArea.setMargin(new Insets(10, 10, 10, 10));
+		AnalizedResultTextArea.setMargin(new Insets(10, 10, 10, 10));
 		
 		GridBagConstraints gbcPanel3 = new GridBagConstraints();
         gbcPanel3.fill = GridBagConstraints.HORIZONTAL;
@@ -145,6 +147,9 @@ class MakeWinFrame{
         gbcPanel3.fill = GridBagConstraints.BOTH;
         gbcPanel3.weighty = 1.0;
         Panel3.add(Matched_scrollpane, gbcPanel3);
+        
+        gbcPanel3.gridx = 1;
+        Panel3.add(AnalizedResultTextArea,gbcPanel3);
 		/*---------------------------------- Content Add ----------------------------------*/
 		frame.add(Panel1);
 		frame.add(Panel2);
