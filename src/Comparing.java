@@ -181,5 +181,6 @@ class Comparing implements ActionListener{
         MatchedWrdNum.clear();
         MatchedWrdNumTrue.clear();
         MatchedWrdArrTrue.clear();
+        MatchedWrdPOSList.clear();
     }
 }
