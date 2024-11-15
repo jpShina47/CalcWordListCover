@@ -56,7 +56,7 @@ class Comparing implements ActionListener{
 		} catch (IOException ioexception) {
 	        System.out.println(ioexception.toString());
 		}
-		String[] WordArr = MakeWinFrame.ScriptTextArea.getText().split("\\s|,\\s*|;\\s*|:\\s*|\\.\\s*|\\n\\s*|\\-\\s*");
+		String[] WordArr = MakeWinFrame.ScriptTextArea.getText().split("\\s|,\\s*|;\\s*|:\\s*|\\.\\s*|\\n\\s*|\\-\\s*|\"\\s*");
 		
 		Sheet sheet = wb.getSheetAt(0);
         int rowCount = sheet.getLastRowNum();
