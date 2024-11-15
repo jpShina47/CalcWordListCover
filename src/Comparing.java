@@ -162,11 +162,11 @@ class Comparing implements ActionListener{
         }
         
         MatchedWrdPOSforResult = "名詞"		+ "\t" + Integer.toString(N_num) + "\n";
-        MatchedWrdPOSforResult = "動詞"		+ "\t" + Integer.toString(V_num) + "\n";
-        MatchedWrdPOSforResult = "形容詞"		+ "\t" + Integer.toString(Adj_num) + "\n";
-        MatchedWrdPOSforResult = "副詞"		+ "\t" + Integer.toString(Adv_num) + "\n";
-        MatchedWrdPOSforResult = "前置詞"		+ "\t" + Integer.toString(Prep_num) + "\n";
-        MatchedWrdPOSforResult = "接続詞・他"	+ "\t" + Integer.toString(ConjAux_num);
+        MatchedWrdPOSforResult = MatchedWrdPOSforResult + "動詞"		+ "\t" + Integer.toString(V_num) + "\n";
+        MatchedWrdPOSforResult = MatchedWrdPOSforResult + "形容詞"		+ "\t" + Integer.toString(Adj_num) + "\n";
+        MatchedWrdPOSforResult = MatchedWrdPOSforResult + "副詞"		+ "\t" + Integer.toString(Adv_num) + "\n";
+        MatchedWrdPOSforResult = MatchedWrdPOSforResult + "前置詞"		+ "\t" + Integer.toString(Prep_num) + "\n";
+        MatchedWrdPOSforResult = MatchedWrdPOSforResult + "接続詞・他"	+ "\t" + Integer.toString(ConjAux_num);
         
         new GetResult();
         
